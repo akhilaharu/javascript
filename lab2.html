@@ -1,0 +1,113 @@
+<!DOCTYPE hmtl>
+<html>
+<head>	 
+  <title>JS Lab3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+  body{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-4PQ5gdLYHiMAhqD65E5iT53vDng3PhitMQ&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  p{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+  }
+  fieldset{
+    border: 1px lightgrey;
+    padding: 20px;
+    background-color: lightgrey;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    line-height: 30px;
+  }
+  input{
+    width:375px;
+    border-radius: 10px;
+  }
+  #signin{
+    border: 0;
+    color: white;
+  }
+</style>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4" style="margin-top: 50px;">
+        <div align="center">
+        <p>SignUp</p>
+        </div>
+        <fieldset>
+          <form name="signupForm"onsubmit="return validateForm()" method="post">
+            Name <br>
+            <input type="text" name="name">
+            Email<br>
+            <input type="text" name="email">
+            Phone No<br>
+            <input type="tel" name="phoneno">
+            Password<br>
+            <input type="Password" name="Password"><br>
+            <br><input type="submit" value="Submit" id="signin" class="bg-success"/>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validateForm() {
+      let x = document.forms["signupForm"]["name"].value;
+      if (x == "") {
+      alert("Name must be filled out");
+      return false;
+      }
+      let y = document.forms["signupForm"]["email"].value;
+      if (y == "") {
+      alert("Email must be filled out");
+      return false;
+      }
+      let z = document.forms["signupForm"]["phoneno"].value;
+      if (z == "") {
+      alert("PhoneNo must be filled out");
+      return false;
+      }
+      let w = document.forms["signupForm"]["Password"].value;
+      if (w == "") {
+      alert("Password must be filled out");
+      return false;
+      }
+      if(document.forms["signupForm"]["name"].value.length<3){
+        alert("Name should minimum have 3 characters");
+      }
+      if(document.forms["signupForm"]["phoneno"].value.length<10){
+        alert("PhoneNo should minimum have 10 characters");
+      }
+      if(document.forms["signupForm"]["Password"].value.length<6){
+        alert("Password should minimum have 6 characters");
+      }
+      var reg=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (!(reg.test(document.forms["signupForm"]["email"].value)))
+      {
+        alert("You have entered an invalid email address!");
+        return (false);
+      }
+      var re = /^[A-Za-z]+$/;
+      if (document.forms["signupForm"]["name"].value.match(re))
+      {
+        return(true);
+      }
+      else{
+       alert('Name should not contain number');
+       return false;
+      }
+    }
+  </script>
+</body>
+</html>
